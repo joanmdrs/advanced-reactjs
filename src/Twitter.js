@@ -1,5 +1,6 @@
 import React, {useEffect, memo, useState} from 'react'
 
+// shouldComponenteUpdate
 const areEqual = (prevProps, nextProps) => {
     return prevProps.loading === nextProps.loading
 }
@@ -13,8 +14,10 @@ function Twitter(props){
     //     tweet = 'title'
     // }
    
-    // O useEffect é equivalente
-    // aos componentes 
+    // O useEffect é equivalente aos componentes :
+    // componentDidMount
+    // componentDidUpdate
+    // componentWillUnmount
 
     // componentDidMount
     useEffect(() => {
@@ -37,9 +40,7 @@ function Twitter(props){
     }, [])
 
 
-    //shouldComponenteUpdate
-
-
+    // Maneira antiga de estabelecer o ciclo de vida:
 
     // componentDidUpdate = (prevProps)  => {
     //     const { loading } = props
@@ -52,7 +53,7 @@ function Twitter(props){
     //     console.log('ComponentWillUnmount: fui removido')
     // }
 
-    // // pergunta se pode renderizar a aplicação novamente
+    // // o should pergunta se pode renderizar o componente novamente
     // shouldComponentUpdate = (nextProps, nextState) => {
     //     return this.state.tweet !== nextState.tweet || nextProps.loading !== this.props.loading
     // }
@@ -61,8 +62,6 @@ function Twitter(props){
         setTweet('Tweet atualizado')
     }
 
-    
-    const { posts } = props
     console.log('Tweet', tweet)
     return (
         <div>
