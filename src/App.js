@@ -33,7 +33,7 @@ class App extends Component {
     return (
       <div>
         <button onClick={this.onRemove}>Remover componente</button>
-        {this.state.actived && <Twitter posts={posts} loading={this.state.posts} />}
+        {this.state.actived && <Twitter posts={posts} loading={this.state.loading} />}
       </div>
     )
   }
