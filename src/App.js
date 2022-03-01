@@ -1,34 +1,34 @@
 import React, {Fragment} from 'react'
 
-const store = ['', '', '']
-function Column(){
+const store = [{
+  type: 'Roupa'
+},{
+  type: 'Calçado'
+},{
+  type: 'Camiseta'
+}]
+
+function Column({type}) {
   return (
     <tr>
-      <td>Tênis</td>
-      <td>Roupa</td>
+      <td>{type}</td>
     </tr>
   )
 }
-// OS fragments servem paara cabar com o problema
-// do jsx retornar apenas um elemento, ou seja, uma div
-// com vários elementos dentro
-function App () {
 
+function App(){
   const renderColumns = (element, key) => {
     return (
-      <Fragment key={key}>
-       <Column />
-    </Fragment>
+      <Fragment key={`column-${key}`}>
+        <Column type={element.type} />
+      </Fragment>
     )
-    
-   
   }
-  return(
+
+  return (
     <table>
-      <tr>
-        {store.map(renderColumns)}
-      </tr>
-    </table> 
+      {store.map(renderColumns)}
+    </table>
   )
 }
 
