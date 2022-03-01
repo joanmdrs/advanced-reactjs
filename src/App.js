@@ -1,35 +1,32 @@
-import React, {Fragment} from 'react'
-
-const store = [{
-  type: 'Roupa'
-},{
-  type: 'Calçado'
-},{
-  type: 'Camiseta'
-}]
-
-function Column({type}) {
-  return (
-    <tr>
-      <td>{type}</td>
-    </tr>
-  )
-}
+import React, { useEffect, useRef } from 'react'
 
 function App(){
-  const renderColumns = (element, key) => {
-    return (
-      <Fragment key={`column-${key}`}>
-        <Column type={element.type} />
-      </Fragment>
-    )
+  const inputRef = useRef()
+  const count = useRef(1)
+
+  const handleClick = () => {
+    inputRef.current.focus()
+    console.log('inputRef.current', inputRef.current)
   }
 
+  useEffect(() => {
+    setTimeout(() => {
+      count.current = 300
+    }, 3000)
+  })
+
+
   return (
-    <table>
-      {store.map(renderColumns)}
-    </table>
+    <>
+      Foco: <input ref={inputRef} />
+      <br />
+      <br />
+      <button onClick={handleClick}>Focar</button>
+
+      <h1>Valor de count : {count.current}</h1>
+    </>
   )
 }
+
 
 export default App
